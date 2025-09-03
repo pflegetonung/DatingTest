@@ -1,8 +1,12 @@
-//
-//  TabViewModel.swift
-//  Dating
-//
-//  Created by Phillip on 03.09.2025.
-//
+import SwiftUI
+import Combine
 
-import Foundation
+final class TabViewModel: ObservableObject {
+    @Published var selected: Tab = .feed
+    
+    func select(_ tab: Tab) {
+        guard tab != selected else { return }
+        selected = tab
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+    }
+}
